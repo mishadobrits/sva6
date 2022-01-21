@@ -73,7 +73,7 @@ class FFMPEGCaller:
             else:  # self.overwrite_force -is None
                 pass
 
-        command = os.path.join(PATH_TO_FFMPEG, "ffmpeg") + " " + command
+        command = PATH_TO_FFMPEG + " " + command
         if self.hide_output:
             command += " -hide_banner -loglevel error"
         if self.print_command:

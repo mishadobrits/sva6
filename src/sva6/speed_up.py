@@ -338,15 +338,18 @@ class AlgOr(SpeedUpAlgorithm):
 
 def intersection_k(is_k_acceptable_func, *lists_of_interesting_parts):
     """
-    Moments, where intersects at least k parts
+    Segments, where intersects k parts, where is_k_acceptable_func(k) is True.
+    For example for is_k_acceptable_func = lamda k: k >= 1 this function returns segments where there is at laest on part
+    i.e. union of segments.
+    This function uses skineline algorithm. TODO: O(n ln(n)) -> O(n)
     """
     borders = []
     for list_of_ip in lists_of_interesting_parts:
         for start, end in list_of_ip:
             borders.append([start, 0, 1])
             borders.append([end, 1, -1])
-
     borders.sort()
+
     rt = []
     current_parts = 0
     for time, priority, delta in borders:

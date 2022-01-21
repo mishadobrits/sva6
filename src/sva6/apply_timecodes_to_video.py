@@ -4,7 +4,8 @@ import shutil
 import sys
 
 from typing import List, Callable, Any
-from .globals import TEMPORARY_DIRECTORY_PREFIX
+from .globals import TEMPORARY_DIRECTORY_PREFIX, PATH_TO_MKVMERGE
+
 if sys.version_info < (3, 8):
     from typing_extensions import Literal
 else:
@@ -82,7 +83,7 @@ def apply_v1_timecodes_to_video_2vfr(
     v2timecodes_path = tpath("timecodes.v2")
     v2timecodes = v1timecodes_to_v2timecodes(v1timecodes, video.fps, video.reader.nframes)
     save_v2_timecodes_to_file(v2timecodes_path, v2timecodes)
-    os.system(f"mkvmerge -o {tempory_video_path} --timestamps 0:{v2timecodes_path} -A {videopath} {output_audio_path}")
+    os.system(f"{PATH_TO_MKVMERGE} -o {tempory_video_path} --timestamps 0:{v2timecodes_path} -A {videopath} {output_audio_path}")
 
     shutil.copy(tempory_video_path, output_path)
     delete_all_sva_temporary_objects()

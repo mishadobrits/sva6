@@ -1,4 +1,3 @@
-# r"""
 from src.sva6.apply_timecodes_to_video import apply_v1_timecodes_to_video_2vfr
 from src.sva6.speed_up import VolumeThresholdAlgorithm, SileroVadAlgorithm, intersection
 
@@ -15,4 +14,3 @@ v1timecodes.append([ip[-1][0], ip[-1][1], 1])
 
 output_path = input("The path to an output video: ")  # r"C:\Users\m\Downloads\Sites-Buffers\video_with_sound_cutten-sva.mkv"
 apply_v1_timecodes_to_video_2vfr(v1timecodes, video_path, output_path, last_number_in_v1_represent="speed")
-# """
